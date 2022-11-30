@@ -47,10 +47,34 @@
 							</header>
 							
 							<h3>Summary of Completed Work</h3>
-							<p>We planned out the overall project structure including the different classes and files we would need. We also set up a project repository that imports the glm and OpenGL libraries and uses CMake for compilation. Next, we made a simple renderer that orthographically projects the particles onto a 2d plane. We implemented most of the features for our sequential simulator and made some scene files to test on. In our current implementation, we are able to load a scene file, step the sequential simulator on it, and draw the current state of the particles. We have begun to plan out our parallel simulator.</p>
+							<p>We planned out the code design of the project including the different classes and files we would need. Then, we set up a project repository which imports the glm and OpenGL libraries and uses CMake for compilation. Next, we implemented a simple renderer with OpenGL that orthographically projects the particles onto a 2d plane. 
 
+We integrated this rendering layer with a working sequential simulator supporting baseline features including position based density constraints and collision constraints, Jacobi iteration for updating particle positions, XSPH viscosity post processing, and surface tension correction. In our current implementation, we are able to load a scene file, step the sequential simulator on it, and draw the current state of the particles. A demo of our simulator on a simple scene with 10k particles is
+shown below. We also started implementing a parallel version of the simulator which involved writing CUDA kernels for the position and constraint updates.</p>
 							<h3>Goals and Deliverables:</h3>
-                            <p>TODO</p>
+                            <p>
+                             We believe that we are on track to complete all of the baseline goals and deliverables in our initial proposal as well as the stretch goals of surface tension correction and vorticity confinement. We’re ahead of schedule in terms of the simulation features we’re able to support as we finished the baseline goals of the density and collision constraints, Jacobi iteration, XSPH viscosity, and the stretch goal of surface tension correction. We’re slightly behind schedule in terms of integrating the parallel CUDA kernels and implementing parallel counting sort within our simulator. We’re also behind schedule for rendering as we only support 2D particles currently. The main stretch goal we’re still aiming for is implementing realistic rendering following the pipeline described in Interactive SPH Simulation and Rendering on the GPU.
+
+                            Our new baseline goals are to implement:
+                            <ul>
+                                <li>Position-based density constraints and collision constraints </li>
+                                <li>Parallelized Jacobi iteration for updating particle positions (with CUDA kernels) </li>
+                                <li>Efficient neighbor computation using parallel counting sort (with CUDA kernels) </li>
+                                <li>Parallelization of particle and constraint updates (with CUDA kernels)  </li>
+                                <li>XSPH viscosity post-processing for coherent motion  </li>
+                                <li>Surface tension correction to reduce particle clustering  </li>
+                                <li>Vorticity confinement to reduce numerical damping  </li>
+                                <li>3D Particle rendering using OpenGL  </li>
+                                <li>Benchmarking of parallel vs. sequential versions on GPU vs. CPU  </li>
+                            </ul>
+
+                            We plan on presenting a real-time demo of our fluid simulation as well as benchmarking results of parallel vs. sequential versions with graphs at the poster session. Our new stretch goals are to implement:
+
+                            <ul>
+                                <li> Realistic rendering by implementing the GPU voxel rendering pipeline from Interactive SPH Simulation and Rendering on the GPU with CUDA kernels and GLSL shaders  </li>
+                                <li> Extend the neighbor computation to use parallel radix sort (with CUDA) following the work of Fast Fixed-Radius Nearest Neighbors </li>
+                            </ul>
+                            </p>
 
 							<h3>Preliminary Results</h3>
 							<p>Screenshots of our simulation:</p>
@@ -62,7 +86,9 @@
 							</div>
 
 							<h3>Potential Issues</h3>
-							<p>TODO</p>
+							<p>
+                            The main issues we are concerned with are implementing a sufficient rendering layer so that we can at least render 3D particles and we are hoping to be able to implement more realistic rendering. We are planning on devoting more time towards this as we finish integrating the parallel simulator so that we can have a better demo. Another issue we are working on is tuning the hyperparameters of the physical simulation. We are largely following the hyperparameters listed in the main position-based fluids paper, but we’ve run into some unexpected behavior with some of them which we’ve had to tweak.
+                            </p>
 
 							<h3>Updated Schedule</h3>
 							<table>
@@ -76,23 +102,32 @@
 								</tr>
 								<tr>
 									<td>11/17-11/23</td>
-									<td>Write CUDA kernels for parallelized Jacobi iteration and particle and constraint updates. Add XSPH viscosity post-processing. Begin implementation of rendering with OpenGL.</td>
+									<td>Write CUDA kernels for parallelized Jacobi iteration and particle and constraint updates. Begin implementation of rendering with OpenGL.</td>
 								</tr>
 								<tr>
 									<td>11/24-11/30</td>
-									<td>Finish 3D particle rendering using OpenGL. Produce first preliminary demo. Begin extension of efficient neighbor computation with parallel counting sort. Finish intermediate milestone report.</td>
+									<td>Produce first preliminary demo. Add XSPH viscosity post-processing. Finish intermediate milestone report. Implement surface tension correction. </td>
 								</tr>
 								<tr>
-									<td>12/1-12/7</td>
-									<td>Finish parallelization of efficient neighbor computation. Implement surface tension correction and vorticity confinement. Begin benchmarking performance and produce a demo with new features.</td>
+									<td>12/1-12/4</td>
+									<td> Finish implementing 3D particle rendering using OpenGL (Lawrence). Begin extension of efficient neighbor computation with parallel counting sort (Konwoo). Implement vorticity confinement (Konwoo). 
+</td>
 								</tr>
 								<tr>
-									<td>12/8-12/14</td>
-									<td>Implement GPU voxel rendering pipeline and shaders. If time permits, extend neighbor computation to use parallel radix sort.</td>
+									<td>12/5-12/7</td>
+									<td>Finish parallelization of efficient neighbor computation (Konwoo). Integrate parallel code and CUDA kernels together (Lawrence). Produce a demo with all of our new features (Lawrence). </td>
+								</tr>
+								<tr>
+									<td>12/8-12/11</td>
+									<td>Begin benchmarking performance (Konwoo + Lawrence). Begin implementing GPU voxel rendering pipeline (Konwoo) and shaders (Lawrence). </td>
+								</tr>
+								<tr>
+									<td>12/12-12/14</td>
+                                    <td>Finish GPU rendering pipeline and shaders (Konwoo + Lawrence). Finish benchmarking and demo for presentation (Konwoo + Lawrence). If time permits, extend neighbor computation to use parallel radix sort (Lawrence).  </td>
 								</tr>
 								<tr>
 									<td>12/15-12/18</td>
-									<td>Finish benchmarking and demo for presentation. Clean up code for submission. Prepare final report and poster.</td>
+                                    <td> Clean up code for submission (Konwoo + Lawrence). Prepare final report and poster (Konwoo + Lawrence).  </td>
 								</tr>
 							</table>
 
