@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Real-time Position Based Fluid Simulation</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Project proposal</a></li>
+							<li><a href="midpoint.html">Milestone report</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<header>
+								<h1>Milestone Report</h1>
+							</header>
+							
+							<h3>Summary of Completed Work</h3>
+							<p>We planned out the overall project structure including the different classes and files we would need. We also set up a project repository that imports the glm and OpenGL libraries and uses CMake for compilation. Next, we made a simple renderer that orthographically projects the particles onto a 2d plane. We implemented most of the features for our sequential simulator and made some scene files to test on. In our current implementation, we are able to load a scene file, step the sequential simulator on it, and draw the current state of the particles. We have begun to plan out our parallel simulator.</p>
+
+							<h3>Goals and Deliverables:</h3>
+                            <p>TODO</p>
+
+							<h3>Preliminary Results</h3>
+							<p>Screenshots of our simulation:</p>
+							<div class="image">
+								<img src="images/efs0.png" alt=""/>
+							</div>
+							<div class="image">
+								<img src="images/efs1.png" alt=""/>
+							</div>
+
+							<h3>Potential Issues</h3>
+							<p>TODO</p>
+
+							<h3>Updated Schedule</h3>
+							<table>
+								<tr>
+									<th>Week</th>
+									<th>Todo</th>
+								</tr>
+								<tr>
+									<td>11/10-11/16</td>
+									<td>Discuss and fully understand the algorithm. Plan out code design for sequential and parallel versions of simulator. Complete implementation of sequential version with density and collision constraints with no rendering.</td>
+								</tr>
+								<tr>
+									<td>11/17-11/23</td>
+									<td>Write CUDA kernels for parallelized Jacobi iteration and particle and constraint updates. Add XSPH viscosity post-processing. Begin implementation of rendering with OpenGL.</td>
+								</tr>
+								<tr>
+									<td>11/24-11/30</td>
+									<td>Finish 3D particle rendering using OpenGL. Produce first preliminary demo. Begin extension of efficient neighbor computation with parallel counting sort. Finish intermediate milestone report.</td>
+								</tr>
+								<tr>
+									<td>12/1-12/7</td>
+									<td>Finish parallelization of efficient neighbor computation. Implement surface tension correction and vorticity confinement. Begin benchmarking performance and produce a demo with new features.</td>
+								</tr>
+								<tr>
+									<td>12/8-12/14</td>
+									<td>Implement GPU voxel rendering pipeline and shaders. If time permits, extend neighbor computation to use parallel radix sort.</td>
+								</tr>
+								<tr>
+									<td>12/15-12/18</td>
+									<td>Finish benchmarking and demo for presentation. Clean up code for submission. Prepare final report and poster.</td>
+								</tr>
+							</table>
+
+						</div>
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+<
